@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="route.js"></script> 
+    <title>Node App</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #232323;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 10px 40px;
+            background-color: #343434;
+            border-radius: 5px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            color: #fff;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 3px 10px;
+        }
+
+        .navbar {
+            padding: 4px 30px 10px 0px;
+            border-bottom: #232323 3px solid;
+        }
+
+        .page-content {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .products-list {
+            width: 70%;
+            padding: 10px 30px;
+            background-color: #343434;
+            border-radius: 10px;
+            margin: 2px auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            color: #fff;
+        }
+
+        .products-detail {
+            display: flex;
+        }
+
+        .product-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 5px;
+            padding: 10px 10px;
+            margin: 0px 10px;
+        }
+
+        .product-specs {
+            text-align: left;
+            margin: 0px 10px;
+
+        }
+
+        span {
+            color: greenyellow;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 2px 0px 2px 0px;
+        }
+
+        h3 {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .product-info {
+            width: 30%;
+            padding: 5px 0px;
+            text-align: left;
+        }
+
+        .btn {
+            padding: 12px 10px;
+            border-radius: 2px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #16A085;
+        }
+
+        .btn-secondary {
+            background-color: #FF5733;
+        }
+
+        .rating-box-customer {
+            background-color: #16A085;
+            width: 200px;
+            height: 100px;
+            border:none;
+            border-radius: 10px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            text-decoration: solid;
+            text-shadow: #ccc;
+        }
+
+        .rating-box-expert {
+            float: right;
+            background-color: #16A085;
+            width: 200px;
+            height: 100px;
+            border:none;
+            border-radius: 10px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            text-decoration: solid;
+            text-shadow: #ccc;
+        }
+
+        .rating-box h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .rating-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .product-desc {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .product-desc-image {
+            flex: 0 0 40%; /* Adjust the width of the image container */
+            margin-right: 20px; /* Adjust the spacing between image and details */
+        }
+
+        .product-desc-details {
+            flex: 0 0 60%; /* Adjust the width of the details container */
+        }
+
+        .product-desc h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-desc h2 {
+            font-size: 20px;
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .product-desc-details h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-desc-p {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* Set fixed dimensions for images and videos */
+        .product-desc-image img,
+        .product-desc-image iframe {
+            max-width: 100%; /* Limit maximum width */
+         /* Maintain aspect ratio */
+        }
+
+        /* Adjust the width of the container */
+        .product-desc-image {
+            margin-right: 20px; /* Adjust the spacing between image and details */
+        }
+        /* CSS for the ratings container */
+.ratings-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+/* Adjustments for the rating boxes */
+.rating-box {
+    background-color: #16A085;
+    width: 200px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center; /* Center the content */
+    box-sizing: border-box;
+    text-decoration-color: #343434;
+}
+
+.rating-box h3 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.rating-box h4 {
+    margin: 5px 0;
+    font-size: 14px;
+}
+.rating-box h1{
+    margin: 5px 0;
+    font-size: 30px;
+    text-decoration-thickness: 50%;
+
+}
+.ratings-image-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between;
+    margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+/* CSS for the image-container */
+.image-container {
+    width: 60%; /* Adjust width as needed */
+    margin-right: 20px; /* Adjust margin as needed */
+}
+.highlight {
+    color: hwb(79 20% 0%); /* Your desired highlight color */
+}
+.chatbot {
+    position: fixed; /* Fixed positioning so it stays in the same place when scrolling */
+    top: 5px; /* Distance from the bottom of the viewport */
+    right: 5px; /* Distance from the right of the viewport */
+    width: 100px; /* Width of the button */
+    height: 100px;
+    background-color:greenyellow;
+}
+
+.chatbot-button {
+    width: 100px; /* Width of the button */
+    height: 100px; /* Height of the button */
+    border-radius: 50%; /* Make it round */
+    background-color: blue; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: 16px; /* Font size of the button text */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.chatbot-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+
+
+
+    </style>
+    <script>
+        function startverification(){
+        window.location.href='livevideo.html';
+        }
+        function enableSoon(language) {
+            alert("Language support for " + language + " will be enabled soon!");
+        }
+
+    </script>
+</head>
+<body>
+<div class="main-content">
+    
+    
+    <div class="navbar">
+        <a href="Home">Home</a>
+        <a href="Products">Products</a>
+        <a href="About">About</a>
+        <a href="Contact">Contact</a>
+    </div>
+    
+    <div class="page-content">
+        <div>
+            <h>Please select your language</h>
+            <button id="Telugu" class="btn btn-primary" onclick="loadLanguageContent('telugu')"><a href="/products?language=telugu">TELUGU</a></button>
+                    <button id="Hindi" class="btn btn-primary" onclick="loadLanguageContent('hindi')"><a href="/products?language=hindi">HINDI</a></button>
+                    <button id="English" class="btn btn-primary" onclick="loadLanguageContent('english')"><a href="/products?language=english">ENGLISH</a></button>
+                    <button id="Malyalam" class="btn btn-primary" onclick="loadLanguageContent('malyalum')"><a href="/products?language=malyalum">MALYALUM</a></button>
+                    <button id="Tamil" class="btn btn-primary"onclick="loadLanguageContent('tamil)"><a href="/products?language=tamil">TAMIL</a></button>
+                    <button id="Kanada" class="btn btn-primary"onclick="loadLanguageContent('kanada')"><a href="/products?language=kanada">KANADA</a></button>
+                    <button id="Bengali" class="btn btn-primary"onclick="loadLanguageContent('bengali')"><a href="/products?language=bengali">BENGALI</a></button>
+                    <button id="Odissi" class="btn btn-primary"onclick="loadLanguageContent('odissi')"><a href="/products?language=odissi">ODISSI</a></button>
+        </div>
+        {{%CONTENT%}}
+    </div>
+    
+</div>
+<script>
+    function loadLanguageContent(language) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("content").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://localhost:4000/?language=" + language, true);
+        xhttp.send();
+        loadProductData(language);
+    }
+    
+</script>
+</body>
+</html>
